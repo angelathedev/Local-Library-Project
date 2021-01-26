@@ -13,8 +13,8 @@ function sortAccountsByLastName(accounts) {
 function numberOfBorrows(account, books) {
   //Uses reduce to accumulate the number of borrowed books
   let borrowedBooks = books.reduce((acc, book) => {
-    const borrowed = book.borrows
-    borrowed.forEach(borrow => {
+    const {borrows} = book
+    borrows.forEach(borrow => {
       if(borrow.id === account.id){
         acc++;
       }
