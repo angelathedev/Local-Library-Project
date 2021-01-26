@@ -20,15 +20,15 @@ function partitionBooksByBorrowedStatus(books) {
 }
 
 function getBorrowersForBook(book, accounts) {
-  const bookBorrows = book.borrows;
-  let borrows = bookBorrows.map((borrow) => {
+  const {borrows} = book;
+  let borrowed = borrows.map((borrow) => {
   const account = accounts.find((acct) => acct.id === borrow.id, {})
     account.returned = borrow.returned;
     return account;
   })
   
-  borrows = borrows.slice(0, 10);
-  return borrows;
+  borrowed = borrowed.slice(0, 10);
+  return borrowed;
 }
 
 module.exports = {
