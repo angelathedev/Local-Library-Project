@@ -24,13 +24,8 @@ function numberOfBorrows(account, books) {
 return borrowedBooks;
 }
 
-function getBooksPossessedByAccount(account, books, authors) { 
-  const currentBookList = [];
-  books.forEach((book) => {
-    if(account.id === book.borrows[0].id && book.borrows[0].returned === false ) {
-      currentBookList.push(book);
-    }
-  })
+function getBooksPossessedByAccount(account, books, authors) {
+  let currentBookList = books.filter((book) => account.id === book.borrows[0].id && book.borrows[0].returned === false)
   currentBookList.forEach((currentBook) => {
     const authorList = authors.find((author) => currentBook.authorId === author.id);
     currentBook.author = authorList;
