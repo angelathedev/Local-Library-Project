@@ -8,8 +8,8 @@ function totalAccountsCount(accounts) {
 
 function booksBorrowedCount(books) {
   let booksBorrowed = books.reduce((acc, book) => {
-    const borrowed = book.borrows;
-    borrowed.forEach(borrow => {
+    const {borrows} = book;
+    borrows.forEach(borrow => {
       if(borrow.returned === false){
         acc++;
       }
