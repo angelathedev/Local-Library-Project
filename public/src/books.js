@@ -13,12 +13,7 @@ function partitionBooksByBorrowedStatus(books) {
   let booksReturned = [];
   for(let i = 0; i < books.length; i++){
     let borrowed = books[i].borrows
-    if(borrowed[0].returned === false){
-      booksNotReturned.push(books[i]);
-  }
-  else if(borrowed[0].returned === true){
-    booksReturned.push(books[i]);
-  }
+    borrowed[0].returned ? booksReturned.push(books[i]) : booksNotReturned.push(books[i]);  
   }
   let bookStatus = [booksNotReturned, booksReturned];
   return bookStatus;
